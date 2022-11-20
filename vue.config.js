@@ -6,16 +6,16 @@ const { ElementPlusResolver } = require('unplugin-vue-components/resolvers')
 module.exports = {
     outputDir: "E:\\desktop\\marsctf-docker\\nginx\\html",
     devServer: {
-        disableHostCheck: true,
-        proxy:{
-            '/api':{
-                target: 'http://localhost:8080',
-                changeOrigin:true,
-                pathRewrite: {
-                    '^/api': '/api'
-                }
-            }
-        }
+        // disableHostCheck: true,
+        // proxy:{
+        //     '/api':{
+        //         target: 'http://localhost:8080',
+        //         changeOrigin:true,
+        //         pathRewrite: {
+        //             '^/api': '/api'
+        //         }
+        //     }
+        // }
     },
     productionSourceMap: isDev, //打包不生成map
     chainWebpack: (config) => {

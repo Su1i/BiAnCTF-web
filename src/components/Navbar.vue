@@ -241,24 +241,28 @@
                         <div class="card card-plain">
                             <div class="card-header pb-0 text-left" style="background: none">
                                 <h5 class="">欢迎加入BiAnCTF</h5>
-                                <p class="mb-0">请输入你的用户名和密码完成注册</p>
+                                <p class="mb-0">请输入你的邮箱，用户名和密码完成注册</p>
                             </div>
                             <div class="card-body pb-3">
                                 <Alert v-if="checkError2">{{msg}}</Alert>
                                 <form role="form text-left" autocomplete="new-password">
                                     <div class="input-group input-group-outline my-3">
                                         <input type="text" class="form-control" autocomplete="new-password"
-                                            v-model="newUsername" placeholder="用户名">
+                                            v-model="email" placeholder="邮箱">
+                                    </div>
+                                    <div class="input-group input-group-outline my-3">
+                                        <input type="text" class="form-control" autocomplete="new-password"
+                                            v-model="userName" placeholder="用户名">
                                     </div>
                                     <div class="input-group input-group-outline my-3">
                                         <input type="password" class="form-control" autocomplete="new-password"
-                                            v-model="newPassword" placeholder="密码">
+                                            v-model="password" placeholder="密码">
                                     </div>
                                     <div class="input-group input-group-outline my-3">
                                         <input type="password" class="form-control" autocomplete="new-password"
-                                            v-model="newPasswordR" placeholder="重复密码">
+                                            v-model="checkPwd" placeholder="重复密码">
                                     </div>
-                                    <div class="input-group input-group-outline my-3">
+                                    <!-- <div class="input-group input-group-outline my-3">
                                         <input type="text" v-model="captcha" class="form-control"
                                             autocomplete="new-password" placeholder="验证码">
                                         <div @click="getCaptchaImage">
@@ -266,14 +270,14 @@
                                                 style="cursor: pointer;height: 100%;" />
                                         </div>
 
-                                    </div>
-                                    <div class="form-check form-check-info text-left">
+                                    </div> -->
+                                    <!-- <div class="form-check form-check-info text-left">
                                         <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
                                             checked="">
                                         <label class="form-check-label" for="flexCheckDefault">
                                             我同意 <a href="javascrpt:;" class="text-dark font-weight-bolder">相关事项和条款</a>
                                         </label>
-                                    </div>
+                                    </div> -->
                                     <div class="text-center">
                                         <button type="button"
                                             class="btn bg-gradient-primary btn-lg btn-rounded w-100 mt-4 mb-0"
@@ -368,7 +372,7 @@
                 })
             },
             registerSubmit() {
-                register(this.newUsername, this.newPassword, this.newPasswordR, this.captcha, this.captchaId).then((res) => {
+                register(this.email, this.userName, this.password, this.checkPwd).then((res) => {
                     if (res.data.flag === false) {
                         this.msg = res.data.msg
                         this.checkError2 = true
