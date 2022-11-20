@@ -31,22 +31,22 @@ export function login({email, password}) {
 }
 
 /**
- * 注册接口
+ * 邮箱注册接口
  * @param newUsername
  * @param newPassword
  * @param newPasswordR
  * @returns {AxiosPromise}
  */
-export function register(newUsername, newPassword, newPasswordR, captcha, captchaId) {
+export function register(email, userName, password, checkPwd) {
     return requests({
-        url: '/api/register',
+        url: '/api/user/emailRegister',
         method: 'post',
-        data: qs.stringify({
-            'username': newUsername,
-            'password': newPassword,
-            'passwordR': newPasswordR,
-            captcha,
-            captchaId
+        headers: {'Content-Type': 'application/json'},
+        data: JSON.stringify({
+            'email': email,
+            'userName': userName,
+            'password': password,
+            'checkPwd': checkPwd,
         })
     })
 }
